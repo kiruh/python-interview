@@ -29,7 +29,7 @@ class RedBlackTree:
             y.left.parent = x
 
         y.parent = x.parent
-        if x.parent == None:
+        if not x.parent:
             self.root = y
         elif x == x.parent.left:
             x.parent.left = y
@@ -46,7 +46,7 @@ class RedBlackTree:
             y.right.parent = x
 
         y.parent = x.parent
-        if x.parent == None:
+        if not x.parent:
             self.root = y
         elif x == x.parent.right:
             x.parent.right = y
@@ -77,7 +77,7 @@ class RedBlackTree:
 
         # y is parent of x
         node.parent = y
-        if y == None:
+        if not self.root:
             self.root = node
         elif node.data < y.data:
             y.left = node
@@ -85,12 +85,12 @@ class RedBlackTree:
             y.right = node
 
         # if new node is a root node, simply return
-        if node.parent == None:
+        if not node.parent:
             node.color = BLACK
             return
 
         # if the grandparent is None, simply return
-        if node.parent.parent == None:
+        if not node.parent.parent:
             return
 
         # Fix the tree
